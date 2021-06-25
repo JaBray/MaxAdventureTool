@@ -1,0 +1,47 @@
+Articuno/Ice/Flying
+Zapdos/Electric/Flying
+Moltres/Fire/Flying
+Mewtwo/Psychic/NoType
+Raikou/Electric/NoTye
+Entei/Fire/NoType
+Suicune/Water/NoType
+Lugia/Psychic/Flying
+Ho-Oh/Fire/Flying
+Latias/Dragon/Psychic
+Latios/Dragon/Psychic
+Kyogre/Water/NoType
+Groudon/Ground/NoType
+Rayquaza/Dragon/Flying
+Uxie/Psychic/NoType
+Mesprit/Psychic/NoType
+Azelf/Psychic/NoType
+Dialga/Steel/Dragon
+Palkia/Water/Dragon
+Heatran/Fire/Steel
+Giratina/Ghost/Dragon
+Cresselia/Psychic/NoType
+Tornadus/Flying/NoType
+Thundurus/Electric/Flying
+Reshiram/Dragon/Fire
+Zekrom/Dragon/Electric
+Landorus/Ground/Flying
+Kyurem/Dragon/Ice
+Xerneas/Fairy/NoType
+Yveltal/Dark/Flying
+Zygarde/Dragon/Ground
+Tapu Koko/Electric/Fairy
+Tapu Lele/Psychic/Fairy
+Tapu Bulu/Grass/Fairy
+Tapu Fini/Water/Fairy
+Solgaleo/Psychic/Steel
+Lunala/Psychic/Ghost
+Nihilego/Rock/Poison
+Buzzwole/Bug/Fighting
+Pheromosa/Bug/Fighting
+Xurkitree/Electric/NoType
+Celesteela/Steel/Flying
+Kartana/Steel/Grass
+Guzzlord/Dark/Dragon
+Necrozma/Psychic/NoType
+Stakataka/Rock/Steel
+Blacephalon/Fire/Ghost
