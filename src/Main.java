@@ -359,7 +359,7 @@ public class Main {
 				
 				//Sort the map using our handy-dandy helper function defined below
 				typeFreq = sortMap(typeFreq);
-				//immunFreq = sortMap(immunFreq);
+				immunFreq = sortMap(immunFreq);
 			
 				//If there are no pokemon of the given type, display a warning, otherwise display each type and its frequency
 				if(pokemonOfType.size() == 0) {
