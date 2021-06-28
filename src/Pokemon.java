@@ -9,6 +9,7 @@ public class Pokemon {
 	private Type type1 = null;
 	private Type type2 = null;
 	private ArrayList<Type> Weaknesses;
+	private ArrayList<Type> Immunities;
 
 	
 	public Pokemon(String n, Type t1, Type t2){
@@ -16,6 +17,7 @@ public class Pokemon {
 		type1 = t1;
 		type2 = t2;
 		Weaknesses = new ArrayList<Type>();
+		Immunities = new ArrayList<Type>();
 		
 	}
 	
@@ -68,12 +70,13 @@ public ArrayList<Type> getImmunities(){
 	ArrayList<Type> type1Immu = type1.getImmunities();
 	ArrayList<Type> type2Immu = type2.getImmunities();
 	
+	for(Type t : type1Immu)
+		Immunities.add(t);
 	for(Type t : type2Immu) {
-		if(!type1Immu.contains(t))
-			type1Immu.add(t);
+		Immunities.add(t);
 	}
 	
-	return type1Immu;
+	return Immunities;
 }
 
 	

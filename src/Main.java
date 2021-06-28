@@ -228,12 +228,20 @@ public class Main {
 		File pokemon = new File("./pokeList.txt");
 		ArrayList<Pokemon> pokeList = new ArrayList<Pokemon>();
 		
+		Pokemon guzzlord = new Pokemon("Guzzlord", Dark, Dragon);
+		
+		for(Type t : guzzlord.getImmunities()) {
+			System.out.println("Guzzlord should be immune to "+t);
+		}
+		
+		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(pokemon));
 	
 			String line;
 			String[] temp;
 			while((line=br.readLine())!=null) {
+				if(!line.equals("")) {
 				temp = line.split("/");
 				Type t1 = NoType; 
 				Type t2 = NoType;
@@ -250,6 +258,7 @@ public class Main {
 				
 				
 				pokeList.add(new Pokemon(temp[0], t1, t2));
+			}
 			}
 		
 			br.close();
@@ -314,26 +323,35 @@ public class Main {
 					if(p.getType1().getName().toUpperCase().equals(inputType.toUpperCase()) || p.getType2().getName().toUpperCase().equals(inputType.toUpperCase())) {
 						
 						System.out.println("*"+p.getName());
-						ta.setText(ta.getText()+p.getName()+"\n");
+						ta.append(p.getName()+"\n");
 						pokemonOfType.add(p);
 					}
 				}
 				//Add divider to text area
-				ta.setText(ta.getText()+"---------------------------\n");
+				ta.append("---------------------------\n");
 				
 				//Use a HashMap to store each type and how many pokemon of the given type are weak to it
 				HashMap<Type, Integer> typeFreq = new HashMap<Type, Integer>();
-				//Add each type to the map
+				HashMap<Type, Integer>immunFreq = new HashMap<Type, Integer>();
+				
+				//Add each type to the map with a frequency of zero
 				for(Type t : types) {
 					typeFreq.put(t, 0);
+					immunFreq.put(t,0);
 				}
 				
 				//For each pokemon of the given type, add one for each type they are weak to
 				for(Pokemon p : pokemonOfType) {
 					
+
 					for(Type t : types) {
 						if(p.getWeaknesses().contains(t)) {
 							typeFreq.put(t, typeFreq.get(t)+1);
+							//System.out.println(p.getName() + " is weak to "+t);
+						}
+						else if(p.getImmunities().contains(t)) {
+							immunFreq.put(t, immunFreq.get(t)+1);
+							
 						}
 					}
 					
@@ -341,20 +359,32 @@ public class Main {
 				
 				//Sort the map using our handy-dandy helper function defined below
 				typeFreq = sortMap(typeFreq);
+				//immunFreq = sortMap(immunFreq);
 			
 				//If there are no pokemon of the given type, display a warning, otherwise display each type and its frequency
 				if(pokemonOfType.size() == 0) {
-					System.out.println("No pokemon!");
+					
 					ta.setText("No pokemon of this type were found.");
 				}else {
 					//Use a DecimalFormat to make our numbers look nice and pretty
-					DecimalFormat df = new DecimalFormat("#.##");		
+					DecimalFormat df = new DecimalFormat("#.##");	
+					
 					for(Type t : typeFreq.keySet()) {
 						if(typeFreq.get(t)!=0) {
-							System.out.println(t.getName() +" - "+ df.format(((double) typeFreq.get(t)/pokemonOfType.size())*100)+"%");
-							ta.setText(ta.getText()+t.getName() +" - "+ df.format(((double) typeFreq.get(t)/pokemonOfType.size())*100)+"%\n");
+							ta.append(t.getName() +" - "+ df.format(((double) typeFreq.get(t)/pokemonOfType.size())*100)+"%\n");
 						}
 					}
+					
+					ta.append("---------------------------\nImmunities:\n");
+					
+					for(Type t : immunFreq.keySet()) {
+						if(immunFreq.get(t)!=0) {
+							System.out.println(t.getName() +" - "+ df.format(((double) immunFreq.get(t)/pokemonOfType.size())*100)+"%");
+							ta.append(t.getName() +" - "+ df.format(((double) immunFreq.get(t)/pokemonOfType.size())*100)+"%\n");
+						}
+					}
+					
+					
 				}
 			
 			
